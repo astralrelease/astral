@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astral Free</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#090712;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND */
+
+.bg{
+    position:fixed;
+    inset:0;
+
+    background:
+    radial-gradient(circle at top left,#6d28ff55,transparent 30%),
+    radial-gradient(circle at bottom right,#8b5cf655,transparent 30%),
+    linear-gradient(to bottom,#090712,#0d0b18);
+
+    overflow:hidden;
+    z-index:-2;
+}
+
+.glow{
+    position:absolute;
+
+    width:40vw;
+    height:40vw;
+
+    min-width:300px;
+    min-height:300px;
+
+    background:#8b5cf6;
+
+    filter:blur(160px);
+
+    opacity:.15;
+
+    border-radius:50%;
+
+    animation:moveGlow 12s infinite alternate ease-in-out;
+}
+
+.glow1{
+    left:-10%;
+    bottom:-10%;
+}
+
+.glow2{
+    right:-10%;
+    top:-10%;
+}
+
+@keyframes moveGlow{
+    from{
+        transform:translate(0,0);
+    }
+    to{
+        transform:translate(80px,-40px);
+    }
+}
+
+/* PARTICLES */
+
+.particle{
+    position:absolute;
+
+    width:4px;
+    height:4px;
+
+    background:#b892ff;
+
+    border-radius:50%;
+
+    opacity:.5;
+
+    animation:float linear infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+    }
+    to{
+        transform:translateY(-10vh);
+    }
+}
+
+/* NAVBAR */
+
+nav{
+    position:fixed;
+
+    top:20px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:min(92%,1400px);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:18px 28px;
+
+    background:rgba(255,255,255,0.05);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(25px);
+
+    border-radius:28px;
+
+    z-index:100;
+
+    box-shadow:
+    0 0 30px rgba(139,92,246,.15),
+    inset 0 0 20px rgba(255,255,255,.02);
+}
+
+.logo{
+    font-size:clamp(22px,2vw,30px);
+
+    font-weight:800;
+
+    letter-spacing:4px;
+
+    color:#fff;
+
+    text-shadow:
+    0 0 10px #8b5cf6,
+    0 0 25px #8b5cf6;
+}
+
+.nav-buttons{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.nav-btn{
+    padding:12px 22px;
+
+    border-radius:18px;
+
+    border:none;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-weight:600;
+
+    background:rgba(255,255,255,0.05);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    transition:.35s;
+
+    white-space:nowrap;
+}
+
+.nav-btn:hover{
+    transform:translateY(-2px);
+
+    background:#8b5cf6;
+
+    box-shadow:0 0 25px #8b5cfa90;
+}
+
+/* HERO */
+
+.hero{
+    position:relative;
+
+    z-index:5;
+
+    width:100%;
+
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+
+    text-align:center;
+
+    padding:
+    clamp(120px,15vh,180px)
+    20px
+    60px;
+}
+
+.badge{
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:rgba(139,92,246,.12);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    margin-bottom:30px;
+
+    color:#d7c4ff;
+
+    font-weight:600;
+
+    box-shadow:0 0 25px rgba(139,92,246,.15);
+}
+
+.hero h1{
+    font-size:clamp(60px,10vw,130px);
+
+    font-weight:800;
+
+    line-height:1;
+
+    background:linear-gradient(to bottom,#fff,#b892ff);
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    text-shadow:
+    0 0 40px rgba(139,92,246,.25);
+}
+
+.hero p{
+    margin-top:25px;
+
+    font-size:clamp(16px,2vw,24px);
+
+    color:#cfcfe7;
+
+    max-width:850px;
+
+    line-height:1.7;
+}
+
+/* BUTTONS */
+
+.hero-buttons{
+    margin-top:45px;
+
+    display:flex;
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+}
+
+.download-btn{
+    padding:20px 42px;
+
+    font-size:18px;
+
+    border:none;
+
+    border-radius:22px;
+
+    cursor:pointer;
+
+    font-weight:700;
+
+    color:white;
+
+    background:linear-gradient(
+    135deg,
+    #7c3aed,
+    #8b5cf6,
+    #a855f7
+    );
+
+    box-shadow:
+    0 0 35px rgba(139,92,246,.45);
+
+    transition:.35s;
+}
+
+.download-btn:hover{
+    transform:translateY(-4px) scale(1.03);
+
+    box-shadow:
+    0 0 60px rgba(139,92,246,.75);
+}
+
+.secondary-btn{
+    padding:20px 34px;
+
+    border-radius:22px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:rgba(255,255,255,.04);
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    backdrop-filter:blur(25px);
+
+    cursor:pointer;
+
+    transition:.35s;
+}
+
+.secondary-btn:hover{
+    background:rgba(255,255,255,.08);
+
+    transform:translateY(-4px);
+}
+
+/* STATUS */
+
+.status-box{
+    margin-top:70px;
+
+    display:flex;
+
+    gap:25px;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+}
+
+.status-card{
+    min-width:220px;
+
+    padding:24px;
+
+    border-radius:26px;
+
+    background:rgba(255,255,255,.05);
+
+    backdrop-filter:blur(30px);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    box-shadow:
+    0 0 35px rgba(139,92,246,.12);
+
+    transition:.35s;
+}
+
+.status-card:hover{
+    transform:translateY(-4px);
+}
+
+.status-title{
+    font-size:14px;
+
+    color:#b7b7ce;
+
+    margin-bottom:10px;
+}
+
+.status-value{
+    font-size:26px;
+
+    font-weight:700;
+}
+
+.green{
+    color:#4ade80;
+}
+
+.purple{
+    color:#c084fc;
+}
+
+/* PREVIEW SECTION */
+
+.preview-section{
+
+    width:100%;
+
+    padding:
+    120px
+    clamp(20px,4vw,80px);
+
+    position:relative;
+
+    z-index:5;
+}
+
+.preview-title{
+
+    text-align:center;
+
+    font-size:clamp(42px,6vw,72px);
+
+    font-weight:800;
+
+    margin-bottom:70px;
+
+    background:linear-gradient(
+    to bottom,
+    #fff,
+    #b892ff
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.preview-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(320px,1fr));
+
+    gap:35px;
+}
+
+.preview-card{
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:32px;
+
+    overflow:hidden;
+
+    backdrop-filter:blur(25px);
+
+    box-shadow:
+    0 0 35px rgba(139,92,246,.12);
+
+    transition:.4s;
+}
+
+.preview-card:hover{
+
+    transform:
+    translateY(-8px)
+    scale(1.01);
+
+    box-shadow:
+    0 0 50px rgba(139,92,246,.22);
+}
+
+.preview-card img{
+
+    width:100%;
+
+    display:block;
+}
+
+.preview-info{
+
+    padding:28px;
+}
+
+.preview-info h2{
+
+    font-size:32px;
+
+    margin-bottom:14px;
+}
+
+.preview-info p{
+
+    color:#cfcfe7;
+
+    line-height:1.7;
+
+    font-size:16px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+nav{
+    flex-direction:column;
+    gap:18px;
+    padding:20px;
+}
+
+.nav-buttons{
+    width:100%;
+    justify-content:center;
+}
+
+.download-btn,
+.secondary-btn{
+    width:100%;
+    max-width:350px;
+}
+
+.status-card{
+    width:100%;
+    max-width:350px;
+}
+
+.preview-grid{
+    grid-template-columns:1fr;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg">
+
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+
+</div>
+
+<nav>
+
+<div class="logo">ASTRAL</div>
+
+<div class="nav-buttons">
+    <button class="nav-btn">Status</button>
+    <button class="nav-btn" id="previewScroll">Preview</button>
+</div>
+
+</nav>
+
+<section class="hero">
+
+<div class="badge">
+SAFE • UNDETECTED • UPDATED
+</div>
+
+<h1>Astral Free</h1>
+
+<p>
+Undetected enhancement for Standoff 2 with smooth visuals,
+modern optimization and premium gameplay experience.
+Built for legit performance without detections.
+</p>
+
+<div class="hero-buttons">
+
+<button class="download-btn">
+Download Astral Free
+</button>
+
+<button class="secondary-btn" id="previewScroll2">
+View Preview
+</button>
+
+</div>
+
+<div class="status-box">
+
+<div class="status-card">
+<div class="status-title">STATUS</div>
+<div class="status-value green">UNDETECTED</div>
+</div>
+
+<div class="status-card">
+<div class="status-title">VERSION</div>
+<div class="status-value purple">0.38.2 F1</div>
+</div>
+
+<div class="status-card">
+<div class="status-title">ONLINE USERS</div>
+<div class="status-value">1,527</div>
+</div>
+
+</div>
+
+</section>
+
+<section class="preview-section" id="preview">
+
+<div class="preview-title">
+FEATURE PREVIEW
+</div>
+
+<div class="preview-grid">
+
+<div class="preview-card">
+
+<img src="aim.png" alt="Aim">
+
+<div class="preview-info">
+<h2>Aim</h2>
+<p>
+Smooth legit aiming system with premium optimization.
+</p>
+</div>
+
+</div>
+
+<div class="preview-card">
+
+<img src="visual.png" alt="Visual">
+
+<div class="preview-info">
+<h2>Visual</h2>
+<p>
+Clean visuals and modern ESP interface.
+</p>
+</div>
+
+</div>
+
+<div class="preview-card">
+
+<img src="exploit.png" alt="Exploit">
+
+<div class="preview-info">
+<h2>Exploit</h2>
+<p>
+Advanced exploit features with safe execution.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+/* PARTICLES */
+
+for(let i=0;i<120;i++){
+
+    const p=document.createElement('div');
+
+    p.classList.add('particle');
+
+    p.style.left=Math.random()*100+'vw';
+
+    let size=Math.random()*4+2;
+
+    p.style.width=size+'px';
+    p.style.height=size+'px';
+
+    p.style.animationDuration=
+    Math.random()*10+10+'s';
+
+    p.style.opacity=Math.random();
+
+    document.body.appendChild(p);
+}
+
+/* DOWNLOAD */
+
+document.querySelector('.download-btn')
+.addEventListener('click',()=>{
+
+    const link=document.createElement('a');
+
+    link.href='astral_free.exe';
+    link.download='astral_free.exe';
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    document.body.removeChild(link);
+
+});
+
+/* PREVIEW SCROLL */
+
+function scrollPreview(){
+
+document
+.getElementById('preview')
+.scrollIntoView({
+    behavior:'smooth'
+});
+
+}
+
+document
+.getElementById('previewScroll')
+.addEventListener('click',scrollPreview);
+
+document
+.getElementById('previewScroll2')
+.addEventListener('click',scrollPreview);
+
+</script>
+
+</body>
+</html>
